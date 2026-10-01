@@ -1,0 +1,229 @@
+/* ========================================================================= */
+/* AJITH KUMAR RACING - OFFICIAL HYPER-TELEMETRY & GT3 STYLESHEET          */
+/* ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600;800&family=Syncopate:wght@700&display=swap');
+
+/* Tailwind CDN Polyfill & Essential Utilities */
+:root {
+  --bg-carbon: #08080a;
+  --fire-amber: #f59e0b;
+  --fire-orange: #ea580c;
+  --fire-red: #dc2626;
+  --racing-cyan: #06b6d4;
+  --neon-green: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #050507;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: #050507;
+  overflow-x: hidden;
+}
+
+/* Custom Typography Helpers */
+.font-orbitron { font-family: 'Orbitron', monospace; }
+.font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+.font-syncopate { font-family: 'Syncopate', sans-serif; }
+
+/* Ambient Glow Background Orbs */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.glow-cyan {
+  top: 10%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+}
+
+.glow-amber {
+  top: 40%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, transparent 70%);
+}
+
+.glow-fire {
+  bottom: 10%;
+  left: 30%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+}
+
+/* Cyber Grid Background */
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 80%);
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Ticker Animation */
+.ticker-wrap {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: tickerSlide 35s linear infinite;
+}
+
+@keyframes tickerSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Shift Light LEDs */
+.shift-led {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.08s ease;
+}
+
+.shift-led.green.active {
+  background-color: #10b981;
+  box-shadow: 0 0 12px #10b981;
+  border-color: #34d399;
+}
+
+.shift-led.amber.active {
+  background-color: #f59e0b;
+  box-shadow: 0 0 12px #f59e0b;
+  border-color: #fbbf24;
+}
+
+.shift-led.red.active {
+  background-color: #ef4444;
+  box-shadow: 0 0 14px #ef4444;
+  border-color: #f87171;
+}
+
+.shift-led.blue.active {
+  background-color: #3b82f6;
+  box-shadow: 0 0 16px #3b82f6;
+  border-color: #60a5fa;
+  animation: flashLed 0.1s infinite alternate;
+}
+
+@keyframes flashLed {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* Interactive Throttle Pedal */
+.throttle-pedal {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 10px 25px rgba(0, 0, 0, 0.6);
+  transition: transform 0.05s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.throttle-pedal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+  pointer-events: none;
+}
+
+.throttle-pedal:active, .throttle-pedal.depressed {
+  transform: translateY(4px) scale(0.99);
+  background: linear-gradient(to bottom, #18181b, #09090b);
+  border-color: #f59e0b !important;
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(245, 158, 11, 0.6) !important;
+}
+
+/* Master Ignition Button Pulse */
+.ignition-btn.running {
+  background-color: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #34d399;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+}
+
+.ignition-btn.running span.animate-ping {
+  background-color: #10b981;
+}
+
+/* 3D Car Viewport Canvas */
+#three-car-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Livery Buttons */
+.livery-btn.active {
+  box-shadow: 0 0 15px currentColor;
+}
+
+/* Utility Animations */
+@keyframes gradientX {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradientX 6s ease infinite;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Glassmorphism helpers */
+.backdrop-blur-2xl {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}

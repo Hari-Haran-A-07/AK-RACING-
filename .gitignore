@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment / OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor directories
+.vscode/
+.idea/

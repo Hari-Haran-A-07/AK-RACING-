@@ -1,0 +1,21 @@
+{
+  "name": "ajith-kumar-racing-gt3",
+  "version": "2.0.0",
+  "description": "Official Ajith Kumar Racing GT3 Hyper-Speedometer, 3D Demo Car & Procedural Engine Audio Simulator",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve . -p 3000",
+    "dev": "python -m http.server 3000"
+  },
+  "keywords": [
+    "ajith-kumar-racing",
+    "speedometer",
+    "fire-particles",
+    "threejs",
+    "web-audio-api",
+    "gt3",
+    "24h-series"
+  ],
+  "author": "Ajith Kumar Racing Team",
+  "license": "MIT"
+}
