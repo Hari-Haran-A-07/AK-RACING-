@@ -1,5 +1,5 @@
 /* ========================================================================= */
-/* AJITH KUMAR RACING - OFFICIAL HYPER-TELEMETRY & GT3 STYLESHEET          */
+/* AJITH KUMAR RACING - OFFICIAL HYPER-TELEMETRY & LE MANS HYPERCAR STYLES   */
 /* ========================================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600;800&family=Syncopate:wght@700&display=swap');
@@ -12,6 +12,8 @@
   --fire-red: #dc2626;
   --racing-cyan: #06b6d4;
   --neon-green: #10b981;
+  --ferrari-red: #d40000;
+  --modena-yellow: #facc15;
 }
 
 * {
@@ -187,11 +189,6 @@ body {
   display: block;
 }
 
-/* Livery Buttons */
-.livery-btn.active {
-  box-shadow: 0 0 15px currentColor;
-}
-
 /* Utility Animations */
 @keyframes gradientX {
   0%, 100% { background-position: 0% 50%; }
@@ -226,4 +223,278 @@ body {
 .backdrop-blur-2xl {
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
+}
+
+/* ========================================================================= */
+/* MOVABLE SPEEDOMETER & FLOATING TELEMETRY HUD                             */
+/* ========================================================================= */
+
+.movable-toggle-btn.active-movable {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(234, 88, 12, 0.45)) !important;
+  border-color: #f59e0b !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.5), inset 0 0 15px rgba(245, 158, 11, 0.2) !important;
+}
+
+#header-movable-btn.active-movable {
+  background-color: rgba(245, 158, 11, 0.3) !important;
+  border-color: #f59e0b !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4) !important;
+}
+
+/* Speedometer in Floating Movable Mode */
+.speedometer-floating-mode {
+  position: fixed !important;
+  z-index: 99999 !important;
+  width: min(580px, 94vw) !important;
+  max-width: 580px !important;
+  background: rgba(10, 10, 14, 0.9) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border: 2px solid rgba(245, 158, 11, 0.8) !important;
+  border-radius: 1.75rem !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 45px rgba(245, 158, 11, 0.35), inset 0 0 25px rgba(245, 158, 11, 0.08) !important;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: floatEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.speedometer-floating-mode.is-dragging {
+  cursor: grabbing !important;
+  transform: scale(1.025);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.98), 0 0 60px rgba(245, 158, 11, 0.65), inset 0 0 35px rgba(245, 158, 11, 0.15) !important;
+  border-color: #fbbf24 !important;
+}
+
+/* Compact HUD Floating Mode */
+.speedometer-floating-mode.compact-mode {
+  width: min(390px, 90vw) !important;
+  max-width: 390px !important;
+  padding: 1rem 1.25rem !important;
+}
+
+.speedometer-floating-mode.compact-mode .speedo-bottom-telemetry,
+.speedometer-floating-mode.compact-mode .speedo-secondary-stats {
+  display: none !important;
+}
+
+.speedometer-floating-mode.compact-mode #fire-speedometer-canvas {
+  max-width: 350px !important;
+  max-height: 350px !important;
+}
+
+.speedometer-floating-mode.compact-mode .speedo-canvas-container {
+  min-height: 320px !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+@keyframes floatEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Drag Handle Bar */
+.speedo-drag-bar {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(234, 88, 12, 0.2), rgba(0, 0, 0, 0.5));
+  border-bottom: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.65rem 1.25rem;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  border-top-left-radius: 1.65rem;
+  border-top-right-radius: 1.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+}
+
+.speedometer-floating-mode.is-dragging .speedo-drag-bar {
+  cursor: grabbing;
+}
+
+/* ========================================================================= */
+/* LIVERY STUDIO & CAR COLOUR CUSTOMIZER STYLING                            */
+/* ========================================================================= */
+
+.livery-preset-card {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(24, 24, 27, 0.6);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.livery-preset-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.livery-preset-card.active-livery {
+  border-color: #f59e0b !important;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(220, 38, 38, 0.15)) !important;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.4), inset 0 0 15px rgba(245, 158, 11, 0.1) !important;
+}
+
+.livery-preset-card.active-livery::after {
+  content: '✓ ACTIVE';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f59e0b;
+  color: #000;
+  letter-spacing: 0.05em;
+}
+
+/* Color input swatches */
+.custom-color-picker-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s;
+}
+
+.custom-color-picker-wrap:hover, .custom-color-picker-wrap:focus-within {
+  border-color: #f59e0b;
+}
+
+.custom-color-picker-wrap input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+.custom-color-picker-wrap input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.custom-color-picker-wrap input[type="color"]::-webkit-color-swatch {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* Finish Type Buttons */
+.finish-type-btn {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+.finish-type-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.finish-type-btn.active-finish {
+  background: #f59e0b !important;
+  color: #000 !important;
+  border-color: #fbbf24 !important;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+/* ========================================================================= */
+/* OFFICIAL CAR PHOTO & TELEMETRY HOTSPOT EXPLORER                          */
+/* ========================================================================= */
+
+.official-car-container {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.telemetry-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 30;
+}
+
+.hotspot-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f59e0b;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 20px #f59e0b, 0 0 40px rgba(245, 158, 11, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+  animation: hotspotPulse 2s infinite;
+}
+
+@keyframes hotspotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+  70% { box-shadow: 0 0 0 16px rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+.telemetry-hotspot:hover .hotspot-dot {
+  transform: scale(1.3);
+  background: #dc2626;
+}
+
+.hotspot-card {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  width: 240px;
+  padding: 0.85rem 1rem;
+  background: rgba(10, 10, 14, 0.95);
+  border: 1px solid rgba(245, 158, 11, 0.6);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(245, 158, 11, 0.3);
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 40;
+}
+
+.telemetry-hotspot:hover .hotspot-card,
+.telemetry-hotspot.active-hotspot .hotspot-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }

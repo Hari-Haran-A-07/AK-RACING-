@@ -67,7 +67,7 @@ class FireSpeedometer {
 
     this.canvas.width = this.width * dpr;
     this.canvas.height = this.height * dpr;
-    this.ctx.scale(dpr, dpr);
+    this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
   setThrottle(val) {
@@ -701,3 +701,315 @@ class FireSpeedometer {
 
 // Global Speedometer instance
 window.fireSpeedo = null;
+window.speedoMovableCtrl = null;
+
+/**
+ * ============================================================================
+ * AJITH KUMAR RACING - MOVABLE SPEEDOMETER & FLOATING HUD CONTROLLER
+ * Enables full dragging, docking, touch gestures & positioning for Speedometer
+ * ============================================================================
+ */
+class SpeedometerMovableController {
+  constructor(options = {}) {
+    this.card = document.getElementById(options.cardId || 'speedometer-card');
+    this.placeholder = document.getElementById(options.placeholderId || 'speedometer-placeholder');
+    this.dragBar = document.getElementById(options.dragBarId || 'speedo-drag-bar');
+
+    this.toggleBtns = [
+      document.getElementById('speedo-movable-toggle-btn'),
+      document.getElementById('header-movable-btn')
+    ].filter(Boolean);
+
+    this.dockBtns = [
+      document.getElementById('speedo-dock-btn'),
+      document.getElementById('placeholder-dock-btn')
+    ].filter(Boolean);
+
+    this.closeBtn = document.getElementById('speedo-close-movable-btn');
+    this.centerBtn = document.getElementById('speedo-center-btn');
+    this.placeholderCenterBtn = document.getElementById('placeholder-center-btn');
+    this.compactBtn = document.getElementById('speedo-compact-toggle-btn');
+    this.statusLabels = [
+      document.getElementById('speedo-movable-status')
+    ].filter(Boolean);
+
+    this.isMovable = false;
+    this.isCompact = false;
+    this.isDragging = false;
+    this.startX = 0;
+    this.startY = 0;
+    this.posX = null;
+    this.posY = null;
+
+    this.init();
+  }
+
+  init() {
+    if (!this.card) return;
+
+    // 1. Bind Toggle Buttons
+    this.toggleBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.toggle();
+      });
+    });
+
+    // 2. Bind Dock Buttons
+    this.dockBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.setMovable(false);
+      });
+    });
+
+    // 3. Bind Close / Lock Button
+    if (this.closeBtn) {
+      this.closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.setMovable(false);
+      });
+    }
+
+    // 4. Bind Center on Screen Buttons
+    const handleCenter = (e) => {
+      e.preventDefault();
+      this.centerOnScreen();
+    };
+    if (this.centerBtn) this.centerBtn.addEventListener('click', handleCenter);
+    if (this.placeholderCenterBtn) this.placeholderCenterBtn.addEventListener('click', handleCenter);
+
+    // 5. Bind Compact HUD Toggle Button
+    if (this.compactBtn) {
+      this.compactBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.toggleCompact();
+      });
+    }
+
+    // 6. Setup Mouse and Touch Dragging
+    this.setupDragging();
+
+    // 7. Handle Viewport Resize
+    window.addEventListener('resize', () => {
+      if (this.isMovable) {
+        this.clampPosition();
+        if (window.fireSpeedo) {
+          setTimeout(() => window.fireSpeedo.setupCanvasResolution(), 50);
+        }
+      }
+    });
+  }
+
+  toggle() {
+    this.setMovable(!this.isMovable);
+  }
+
+  setMovable(enable) {
+    this.isMovable = enable;
+
+    // Update Status Labels (ON / OFF)
+    this.statusLabels.forEach(label => {
+      label.textContent = enable ? 'ON' : 'OFF';
+      if (enable) {
+        label.classList.remove('text-amber-400', 'text-red-400');
+        label.classList.add('text-emerald-400');
+      } else {
+        label.classList.remove('text-emerald-400');
+        label.classList.add('text-amber-400');
+      }
+    });
+
+    // Update Toggle Buttons active styling
+    this.toggleBtns.forEach(btn => {
+      if (enable) {
+        btn.classList.add('active-movable');
+      } else {
+        btn.classList.remove('active-movable');
+      }
+    });
+
+    if (enable) {
+      // 1. Show Cockpit Dock Placeholder
+      if (this.placeholder) {
+        this.placeholder.classList.remove('hidden');
+      }
+
+      // 2. Show Drag Title Bar
+      if (this.dragBar) {
+        this.dragBar.classList.remove('hidden');
+      }
+
+      // 3. Apply Floating Class
+      this.card.classList.add('speedometer-floating-mode');
+
+      // 4. Position on screen (Default: upper-right or clamped previous position)
+      if (this.posX === null || this.posY === null) {
+        const initialWidth = Math.min(580, window.innerWidth * 0.94);
+        this.posX = Math.max(15, window.innerWidth - initialWidth - 30);
+        this.posY = Math.max(85, Math.min(window.innerHeight - 560, 95));
+      } else {
+        this.clampPosition();
+      }
+
+      this.card.style.left = `${this.posX}px`;
+      this.card.style.top = `${this.posY}px`;
+      this.card.style.right = 'auto';
+      this.card.style.bottom = 'auto';
+
+      // 5. Re-render canvas DPI
+      if (window.fireSpeedo) {
+        setTimeout(() => window.fireSpeedo.setupCanvasResolution(), 60);
+      }
+    } else {
+      // DOCK BACK TO COCKPIT
+      if (this.placeholder) {
+        this.placeholder.classList.add('hidden');
+      }
+      if (this.dragBar) {
+        this.dragBar.classList.add('hidden');
+      }
+
+      this.card.classList.remove('speedometer-floating-mode', 'compact-mode', 'is-dragging');
+      this.card.style.left = '';
+      this.card.style.top = '';
+      this.card.style.right = '';
+      this.card.style.bottom = '';
+      this.card.style.position = '';
+      this.card.style.width = '';
+      this.card.style.transform = '';
+
+      this.isCompact = false;
+      const compactIcon = document.getElementById('speedo-compact-icon');
+      if (compactIcon) compactIcon.className = 'fa-solid fa-compress';
+
+      if (window.fireSpeedo) {
+        setTimeout(() => window.fireSpeedo.setupCanvasResolution(), 60);
+      }
+    }
+  }
+
+  toggleCompact() {
+    if (!this.isMovable) return;
+    this.isCompact = !this.isCompact;
+    const compactIcon = document.getElementById('speedo-compact-icon');
+
+    if (this.isCompact) {
+      this.card.classList.add('compact-mode');
+      if (compactIcon) compactIcon.className = 'fa-solid fa-expand';
+    } else {
+      this.card.classList.remove('compact-mode');
+      if (compactIcon) compactIcon.className = 'fa-solid fa-compress';
+    }
+
+    this.clampPosition();
+    if (window.fireSpeedo) {
+      setTimeout(() => window.fireSpeedo.setupCanvasResolution(), 60);
+    }
+  }
+
+  centerOnScreen() {
+    if (!this.isMovable) {
+      this.setMovable(true);
+    }
+    const cardWidth = this.card.offsetWidth || 540;
+    const cardHeight = this.card.offsetHeight || 500;
+
+    this.posX = Math.max(10, (window.innerWidth - cardWidth) / 2);
+    this.posY = Math.max(80, (window.innerHeight - cardHeight) / 2);
+
+    this.card.style.left = `${this.posX}px`;
+    this.card.style.top = `${this.posY}px`;
+  }
+
+  clampPosition() {
+    if (!this.isMovable) return;
+    const cardWidth = this.card.offsetWidth || 540;
+    const cardHeight = this.card.offsetHeight || 500;
+
+    const maxX = window.innerWidth - cardWidth;
+    const maxY = window.innerHeight - cardHeight;
+
+    this.posX = Math.max(8, Math.min(maxX - 8, this.posX !== null ? this.posX : 20));
+    this.posY = Math.max(75, Math.min(maxY - 8, this.posY !== null ? this.posY : 90));
+
+    this.card.style.left = `${this.posX}px`;
+    this.card.style.top = `${this.posY}px`;
+  }
+
+  setupDragging() {
+    const onStart = (clientX, clientY, target) => {
+      if (!this.isMovable) return false;
+
+      // Ignore click on interactive buttons/inputs
+      if (target.closest('button') || target.closest('select') || target.closest('a') || target.closest('input')) {
+        return false;
+      }
+
+      this.isDragging = true;
+      const rect = this.card.getBoundingClientRect();
+      this.startX = clientX - rect.left;
+      this.startY = clientY - rect.top;
+
+      this.card.classList.add('is-dragging');
+      return true;
+    };
+
+    const onMove = (clientX, clientY) => {
+      if (!this.isDragging || !this.isMovable) return;
+
+      const newX = clientX - this.startX;
+      const newY = clientY - this.startY;
+
+      const cardWidth = this.card.offsetWidth;
+      const cardHeight = this.card.offsetHeight;
+
+      const maxX = window.innerWidth - cardWidth;
+      const maxY = window.innerHeight - cardHeight;
+
+      this.posX = Math.max(5, Math.min(maxX - 5, newX));
+      this.posY = Math.max(5, Math.min(maxY - 5, newY));
+
+      this.card.style.left = `${this.posX}px`;
+      this.card.style.top = `${this.posY}px`;
+    };
+
+    const onEnd = () => {
+      if (!this.isDragging) return;
+      this.isDragging = false;
+      this.card.classList.remove('is-dragging');
+    };
+
+    // Desktop Mouse Drag
+    this.card.addEventListener('mousedown', (e) => {
+      if (onStart(e.clientX, e.clientY, e.target)) {
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      onMove(e.clientX, e.clientY);
+    });
+
+    window.addEventListener('mouseup', onEnd);
+
+    // Mobile / Tablet Touch Drag
+    this.card.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        if (onStart(e.touches[0].clientX, e.touches[0].clientY, e.target)) {
+          e.preventDefault();
+        }
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+      if (this.isDragging && e.touches.length === 1) {
+        onMove(e.touches[0].clientX, e.touches[0].clientY);
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchend', onEnd);
+    window.addEventListener('touchcancel', onEnd);
+  }
+}

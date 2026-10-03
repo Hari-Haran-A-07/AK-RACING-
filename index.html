@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJITH KUMAR RACING | Official Hyper-Telemetry & GT3 Showcase</title>
-  <meta name="description" content="Official Ajith Kumar Racing GT3 Hyper-Speedometer, Interactive Race Car Simulator, Procedural Engine Sound & 24H Endurance Telemetry Portal.">
+  <title>AJITH KUMAR RACING | Official Le Mans Hypercar & Fire Telemetry</title>
+  <meta name="description" content="Official Ajith Kumar Racing Le Mans Hypercar (LMH #50/#62), Interactive 3D Car Livery & Colour Studio, Fire Speedometer Automation & Procedural Hybrid Audio Dyno.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +31,8 @@
             'fire-orange': '#ea580c',
             'fire-red': '#dc2626',
             'racing-cyan': '#06b6d4',
+            'ferrari-red': '#d40000',
+            'modena-yellow': '#facc15'
           }
         }
       }
@@ -60,42 +62,51 @@
           <div class="w-full h-full bg-black rounded-[10px] flex items-center justify-center">
             <span class="font-syncopate font-black text-xl text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-red-500">AK</span>
           </div>
-          <div class="absolute -bottom-1 -right-1 bg-cyan-500 text-black text-[9px] font-black px-1 rounded">62</div>
+          <div class="absolute -bottom-1 -right-1 bg-yellow-400 text-black text-[9px] font-black px-1 rounded">50</div>
         </div>
         <div>
           <div class="font-syncopate font-extrabold text-lg tracking-wider text-white flex items-center gap-2">
             AJITH KUMAR <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-red-500">RACING</span>
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40">OFFICIAL GT3</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/40">OFFICIAL LMH</span>
           </div>
           <div class="text-[11px] tracking-widest text-white/50 uppercase font-rajdhani font-semibold">
-            FIA 24H Series • Porsche 992 GT3 Cup • International Championship
+            FIA WEC • 24H Le Mans Hypercar • 1,000 BHP Hybrid Beast
           </div>
         </div>
       </a>
 
       <!-- Quick Nav Links -->
       <nav class="hidden md:flex items-center gap-8 font-rajdhani font-bold text-sm tracking-wider text-white/70">
-        <a href="#telemetry-cockpit" class="hover:text-amber-400 transition-colors flex items-center gap-2">
-          <i class="fa-solid fa-gauge-high text-amber-500"></i> SPEEDOMETER AUTOMATION
+        <a href="#car-showcase" class="hover:text-amber-400 transition-colors flex items-center gap-2 text-amber-300">
+          <i class="fa-solid fa-palette text-amber-400"></i> OFFICIAL CAR & COLOUR STUDIO
         </a>
-        <a href="#car-showcase" class="hover:text-cyan-400 transition-colors flex items-center gap-2">
-          <i class="fa-solid fa-car-side text-cyan-400"></i> OFFICIAL DEMO GT3 CAR
+        <a href="#official-photo-spotlight" class="hover:text-red-400 transition-colors flex items-center gap-2">
+          <i class="fa-solid fa-camera text-red-400"></i> HD PHOTO TELEMETRY
+        </a>
+        <a href="#telemetry-cockpit" class="hover:text-cyan-400 transition-colors flex items-center gap-2">
+          <i class="fa-solid fa-gauge-high text-cyan-400"></i> FIRE SPEEDOMETER
         </a>
         <a href="#sound-dyno" class="hover:text-red-400 transition-colors flex items-center gap-2">
-          <i class="fa-solid fa-volume-high text-red-500"></i> THROTTLE AUDIO DYNO
+          <i class="fa-solid fa-volume-high text-red-500"></i> HYBRID AUDIO DYNO
         </a>
         <a href="#team-heritage" class="hover:text-white transition-colors flex items-center gap-2">
-          <i class="fa-solid fa-trophy text-yellow-400"></i> HERITAGE & 24H FLEET
+          <i class="fa-solid fa-trophy text-yellow-400"></i> 24H FLEET
         </a>
       </nav>
 
       <!-- Global Engine Audio & Master Controls -->
       <div class="flex items-center gap-3">
+        <!-- Movable Speedometer HUD Quick Button -->
+        <button id="header-movable-btn" title="Toggle Movable Floating Speedometer HUD" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 font-orbitron font-bold text-xs tracking-wider uppercase transition-all shadow-md">
+          <i class="fa-solid fa-arrows-up-down-left-right text-amber-400"></i>
+          <span>MOVE HUD</span>
+        </button>
+
         <!-- Master Engine Ignition Button -->
         <button id="master-ignition-btn" class="ignition-btn relative group px-4 py-2 rounded-lg font-orbitron font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center gap-2 border border-red-500/50 bg-red-950/40 hover:bg-red-600 hover:text-white text-red-400 shadow-lg shadow-red-600/20">
           <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping group-hover:bg-white"></span>
           <i class="fa-solid fa-power-off"></i>
-          <span id="ignition-btn-text">START ENGINE</span>
+          <span id="ignition-btn-text">START HYBRID</span>
         </button>
 
         <!-- Master Sound Toggle -->
@@ -113,103 +124,103 @@
     <!-- Live Telemetry Banner Ticker -->
     <div class="bg-black/90 border-t border-b border-white/10 py-1.5 px-4 overflow-hidden">
       <div class="ticker-wrap flex items-center gap-12 text-xs font-rajdhani font-semibold text-white/70">
-        <div class="ticker-item flex items-center gap-2 text-cyan-400">
-          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-          <span>LIVE TELEMETRY: DUBAI 24H AUTODROME</span>
+        <div class="ticker-item flex items-center gap-2 text-red-500">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          <span>OFFICIAL LMH: FIA 24H LE MANS & WEC SPEC</span>
         </div>
         <div class="ticker-item flex items-center gap-2">
-          <span class="text-white/40">CAR:</span>
-          <span class="text-amber-400 font-bold">AK RACING PORSCHE 992 GT3 CUP (#62)</span>
+          <span class="text-white/40">OFFICIAL MACHINE:</span>
+          <span class="text-amber-400 font-bold">AK RACING 499P HYPERCAR (#50 / #62)</span>
         </div>
         <div class="ticker-item flex items-center gap-2">
-          <span class="text-white/40">MAX POWER:</span>
-          <span class="text-emerald-400 font-bold">510 BHP @ 8,400 RPM</span>
+          <span class="text-white/40">POWERTRAIN:</span>
+          <span class="text-emerald-400 font-bold">1,000 BHP (3.0L TWIN-TURBO V6 + MGU-K HYBRID)</span>
         </div>
         <div class="ticker-item flex items-center gap-2">
           <span class="text-white/40">0-100 KM/H:</span>
-          <span class="text-orange-400 font-bold">3.0 SECONDS</span>
+          <span class="text-orange-400 font-bold">2.1 SECONDS</span>
         </div>
         <div class="ticker-item flex items-center gap-2">
-          <span class="text-white/40">TOP SPEED:</span>
-          <span class="text-red-400 font-bold">318 KM/H (CIRCUIT CONFIG)</span>
+          <span class="text-white/40">TOP VELOCITY:</span>
+          <span class="text-red-400 font-bold">345+ KM/H (CIRCUIT DE LA SARTHE SPEC)</span>
         </div>
         <div class="ticker-item flex items-center gap-2">
-          <span class="text-white/40">EXHAUST TEMP:</span>
-          <span id="ticker-exhaust-temp" class="text-amber-400 font-mono">780 °C (ACTIVE)</span>
+          <span class="text-white/40">AERO PACKAGE:</span>
+          <span class="text-yellow-400 font-bold">CARBON SHARK DORSAL FIN & DUAL-ELEMENT WING</span>
         </div>
-        <div class="ticker-item flex items-center gap-2 text-yellow-400">
+        <div class="ticker-item flex items-center gap-2 text-amber-400">
           <i class="fa-solid fa-flag-checkered"></i>
-          <span>PODIUM CONTENDER • FIA CERTIFIED RACING TEAM</span>
+          <span>LE MANS CHAMPION LIVERY • ROSSO CORSA & GIALLO MODENA</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION: Ultra High-Octane Intro -->
-  <section id="hero" class="relative z-10 min-h-[90vh] flex flex-col justify-center items-center text-center px-4 py-16">
+  <!-- HERO SECTION: Ultra High-Octane Hypercar Intro -->
+  <section id="hero" class="relative z-10 min-h-[85vh] flex flex-col justify-center items-center text-center px-4 py-16">
     <div class="max-w-5xl mx-auto space-y-6">
       
       <!-- Badge -->
-      <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-amber-500/40 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 backdrop-blur-md">
-        <span class="flex h-2 w-2 relative">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+      <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-600/20 via-amber-500/20 to-yellow-500/20 backdrop-blur-md">
+        <span class="flex h-2.5 w-2.5 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
         </span>
-        <span class="font-rajdhani font-bold text-xs uppercase tracking-widest text-amber-300">
-          The $2 Billion Hyper-Tech Motorsports Project
+        <span class="font-rajdhani font-bold text-xs sm:text-sm uppercase tracking-widest text-amber-300">
+          Official Le Mans 499P Hypercar (#50 Champion Livery)
         </span>
       </div>
 
       <!-- Main Headline -->
       <h1 class="font-syncopate font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase leading-none">
         <span class="block text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.2)]">AJITH KUMAR</span>
-        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 animate-gradient-x">
-          RACING GT3
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-amber-400 to-yellow-300 animate-gradient-x">
+          HYPERCAR LMH
         </span>
       </h1>
 
       <!-- Subheadline -->
       <p class="max-w-3xl mx-auto font-rajdhani font-medium text-lg sm:text-2xl text-white/80 leading-relaxed">
-        Experience the extreme raw power, roaring flat-6 throttle harmonics, and hyper-realistic 
-        <span class="text-amber-400 font-bold">Fire Speedometer Automation</span> coupled with the 
-        <span class="text-cyan-400 font-bold">Official AK Racing GT3 Demo Machine</span>.
+        Replaced with the <span class="text-red-400 font-bold">Official 24H Le Mans 499P Hypercar</span>! 
+        Customize car body colors, racing livery stripes, wheel rims and brake calipers in real-time, 
+        or fire up the <span class="text-amber-400 font-bold">Flame Speedometer Automation</span> and screaming hybrid engine sound.
       </p>
 
       <!-- Quick Action Buttons -->
       <div class="pt-6 flex flex-wrap items-center justify-center gap-4">
-        <a href="#telemetry-cockpit" class="px-8 py-4 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 text-white font-orbitron font-extrabold text-sm tracking-wider uppercase shadow-xl shadow-orange-600/30 hover:shadow-orange-600/60 hover:scale-105 transition-all duration-300 flex items-center gap-3 border border-orange-400/40">
-          <i class="fa-solid fa-fire text-amber-300 animate-bounce"></i>
-          LAUNCH FIRE SPEEDOMETER
+        <a href="#car-showcase" class="px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-black font-orbitron font-extrabold text-sm tracking-wider uppercase shadow-xl shadow-red-600/30 hover:scale-105 transition-all duration-300 flex items-center gap-3 border border-amber-400/50">
+          <i class="fa-solid fa-palette text-black text-lg"></i>
+          OPEN CAR COLOUR STUDIO
         </a>
 
-        <a href="#car-showcase" class="px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-orbitron font-bold text-sm tracking-wider uppercase border border-white/20 hover:border-cyan-400 backdrop-blur-md transition-all duration-300 flex items-center gap-3 group">
-          <i class="fa-solid fa-vr-cardboard text-cyan-400 group-hover:rotate-12 transition-transform"></i>
-          3D DEMO CAR EXPERIENCE
+        <a href="#official-photo-spotlight" class="px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-orbitron font-bold text-sm tracking-wider uppercase border border-white/20 hover:border-amber-400 backdrop-blur-md transition-all duration-300 flex items-center gap-3 group">
+          <i class="fa-solid fa-camera text-amber-400 group-hover:scale-110 transition-transform"></i>
+          OFFICIAL HD CAR PHOTO
         </a>
 
-        <button id="hero-quick-rev-btn" class="px-8 py-4 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-orbitron font-bold text-sm tracking-wider uppercase border border-amber-500/40 backdrop-blur-md transition-all duration-300 flex items-center gap-3">
-          <i class="fa-solid fa-gas-pump text-amber-400"></i>
-          TEST THROTTLE SOUND
-        </button>
+        <a href="#telemetry-cockpit" class="px-8 py-4 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-orbitron font-bold text-sm tracking-wider uppercase border border-amber-500/40 backdrop-blur-md transition-all duration-300 flex items-center gap-3">
+          <i class="fa-solid fa-fire text-amber-400"></i>
+          FIRE SPEEDOMETER HUD
+        </a>
       </div>
 
       <!-- Quick Telemetry Specs Bar -->
-      <div class="pt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div class="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
         <div class="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-          <div class="font-orbitron font-black text-2xl text-amber-400">510 HP</div>
-          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">4.0L Naturally Aspirated</div>
+          <div class="font-orbitron font-black text-2xl text-red-500">1,000 HP</div>
+          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">Twin-Turbo V6 + Hybrid</div>
         </div>
         <div class="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-          <div class="font-orbitron font-black text-2xl text-orange-400">9,500</div>
-          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">Max Screaming RPM</div>
+          <div class="font-orbitron font-black text-2xl text-amber-400">2.1 SEC</div>
+          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">0-100 Sprint Blast</div>
         </div>
         <div class="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-          <div class="font-orbitron font-black text-2xl text-red-500">3.0 SEC</div>
-          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">0 to 100 KM/H Sprint</div>
+          <div class="font-orbitron font-black text-2xl text-yellow-300">345+ KM/H</div>
+          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">Le Mans Top Speed</div>
         </div>
         <div class="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-          <div class="font-orbitron font-black text-2xl text-cyan-400">318 KM/H</div>
-          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">Top Track Velocity</div>
+          <div class="font-orbitron font-black text-2xl text-cyan-400">SHARK FIN</div>
+          <div class="font-rajdhani text-xs font-semibold uppercase text-white/50">Active Carbon Aero</div>
         </div>
       </div>
 
@@ -217,7 +228,427 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION 1: THE FIRE SPEEDOMETER AUTOMATION & HYPER-COCKPIT               -->
+  <!-- SECTION 1: OFFICIAL LE MANS HYPERCAR 3D SIMULATOR & COLOUR STUDIO        -->
+  <!-- ========================================================================= -->
+  <section id="car-showcase" class="relative z-20 py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-black">
+    <div class="max-w-7xl mx-auto space-y-10">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-6">
+        <div>
+          <div class="inline-flex items-center gap-2 font-rajdhani font-bold text-sm uppercase tracking-widest text-red-400 mb-2">
+            <i class="fa-solid fa-car-burst text-red-500"></i> Official 499P LMH Replacement & Color Studio
+          </div>
+          <h2 class="font-syncopate font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
+            OFFICIAL CAR & <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-yellow-300">COLOUR STUDIO</span>
+          </h2>
+          <p class="font-rajdhani text-white/70 text-base sm:text-lg max-w-2xl mt-2">
+            Interact with the newly integrated 3D Le Mans Hypercar with signature central Shark Fin, dual-element wing, 
+            and customizable livery paint schemes in high-definition WebGL.
+          </p>
+        </div>
+
+        <!-- 3D Camera Angles & Lighting -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button data-camera-view="front34" class="cam-preset-btn active px-3.5 py-2 rounded-lg bg-amber-500/20 border border-amber-400 text-amber-300 font-orbitron font-bold text-xs uppercase transition-all">
+            3/4 HERO
+          </button>
+          <button data-camera-view="side" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase transition-all">
+            SIDE SWOOSH (#50)
+          </button>
+          <button data-camera-view="sharkfin" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase transition-all">
+            SHARK FIN AERO
+          </button>
+          <button data-camera-view="rear" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase transition-all">
+            EXHAUST FLAMES
+          </button>
+          <button data-camera-view="cockpit" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase transition-all">
+            COCKPIT
+          </button>
+          <button data-camera-view="top" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase transition-all">
+            AERO TOP
+          </button>
+        </div>
+      </div>
+
+      <!-- Main 3D Viewport Stage Container -->
+      <div class="relative w-full h-[640px] rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-b from-zinc-950 via-zinc-900 to-black shadow-[0_0_80px_rgba(0,0,0,0.9)]">
+        
+        <!-- 3D WebGL Canvas Viewport -->
+        <div id="three-car-container" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+
+        <!-- Top Left: Car Spec HUD -->
+        <div class="absolute top-6 left-6 pointer-events-none space-y-2">
+          <div class="px-4 py-2.5 rounded-2xl bg-black/85 border border-red-500/40 backdrop-blur-md text-left inline-block shadow-xl">
+            <div class="font-syncopate font-bold text-sm text-white flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+              <span id="showcase-car-name">499P LE MANS HYPERCAR (#50 CHAMPION)</span>
+            </div>
+            <div class="text-[11px] font-rajdhani text-white/70 font-semibold tracking-wider flex items-center gap-3 mt-0.5">
+              <span>AJITH KUMAR RACING</span>
+              <span class="text-amber-400">•</span>
+              <span class="text-amber-300 font-bold">FIA WEC / 24H HYPERCAR</span>
+              <span class="text-amber-400">•</span>
+              <span class="text-emerald-400 font-bold">1,000 BHP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Right: Lighting Toggles -->
+        <div class="absolute top-6 right-6 flex items-center gap-2">
+          <button id="toggle-headlights-btn" class="px-3.5 py-2 rounded-xl bg-black/80 hover:bg-black border border-white/20 text-white font-orbitron text-xs font-bold flex items-center gap-2 backdrop-blur-md transition-all">
+            <i class="fa-solid fa-lightbulb text-amber-400"></i> MATRIX LEDS
+          </button>
+          <button id="toggle-underglow-btn" class="px-3.5 py-2 rounded-xl bg-black/80 hover:bg-black border border-white/20 text-amber-300 font-orbitron text-xs font-bold flex items-center gap-2 backdrop-blur-md transition-all">
+            <i class="fa-solid fa-sun text-yellow-400"></i> UNDERGLOW
+          </button>
+        </div>
+
+        <!-- Bottom Center: 3D Car Real-time Throttle & Burnout Station -->
+        <div class="absolute bottom-6 inset-x-6 flex flex-wrap items-center justify-between gap-4 pointer-events-auto">
+          
+          <!-- Instructions Hint -->
+          <div class="hidden sm:flex items-center gap-3 px-4 py-2.5 rounded-xl bg-black/85 border border-white/15 backdrop-blur-md text-xs font-rajdhani text-white/80 shadow-lg">
+            <i class="fa-solid fa-arrows-spin text-amber-400 text-sm animate-spin"></i>
+            <span>CLICK & DRAG TO ORBIT 360° • SCROLL TO ZOOM • TEST COLORS BELOW</span>
+          </div>
+
+          <!-- Fast Action Rev & Burnout Triggers -->
+          <div class="flex items-center gap-3 ml-auto">
+            <!-- Burnout Tire Smoke Trigger -->
+            <button id="car-burnout-btn" class="px-5 py-3 rounded-xl bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-500 hover:to-purple-500 text-white font-orbitron font-black text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 flex items-center gap-2 active:scale-95 transition-all">
+              <i class="fa-solid fa-fire text-amber-300"></i>
+              <span>BURNOUT & SMOKE</span>
+            </button>
+
+            <!-- Car 3D Quick Rev Pedal -->
+            <button id="car-rev-trigger-btn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 hover:from-amber-400 hover:to-red-500 text-black font-orbitron font-black text-xs uppercase tracking-wider shadow-lg shadow-orange-500/30 flex items-center gap-2 active:scale-95 transition-all select-none">
+              <i class="fa-solid fa-gauge-simple-high text-black"></i>
+              <span>REV HYPERCAR V6</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Flame Burst Warning Pill -->
+        <div id="car-flame-badge" class="absolute bottom-24 left-1/2 -translate-x-1/2 opacity-0 pointer-events-none transition-opacity duration-150 px-6 py-2 rounded-full bg-red-600/90 border border-red-400 text-white font-orbitron font-black text-xs tracking-widest uppercase shadow-[0_0_30px_rgba(239,68,68,0.8)]">
+          <i class="fa-solid fa-fire-burner animate-bounce mr-2"></i> HYPERCAR EXHAUST FLAME BURST!
+        </div>
+
+      </div>
+
+      <!-- ===================================================================== -->
+      <!-- DEDICATED CAR COLOUR & LIVERY CUSTOMIZATION STUDIO CONTROLS            -->
+      <!-- ===================================================================== -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Livery Presets Grid (Span 7) -->
+        <div class="lg:col-span-7 bg-zinc-900/60 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl space-y-6">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <div>
+              <div class="inline-flex items-center gap-2 font-rajdhani font-bold text-xs uppercase tracking-widest text-amber-400">
+                <i class="fa-solid fa-swatchbook"></i> Championship Paint Themes
+              </div>
+              <h3 class="font-syncopate font-bold text-xl text-white">OFFICIAL LIVERY PRESETS</h3>
+            </div>
+            <span class="text-xs font-orbitron text-white/50">8 THEMES</span>
+          </div>
+
+          <!-- Livery Cards Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Livery 1: Official 50 (Rosso & Giallo) -->
+            <div data-livery="official-50" class="livery-preset-card active-livery p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #c70000 60%, #facc15 60%);">
+                <span class="text-[11px] font-orbitron font-black text-black bg-white/90 px-1 rounded">50</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">OFFICIAL LE MANS #50</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Rosso Corsa & Giallo Modena</div>
+              </div>
+            </div>
+
+            <!-- Livery 2: AK Stealth Carbon (#62 Pro) -->
+            <div data-livery="ak-stealth" class="livery-preset-card p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #18181b 60%, #f59e0b 60%);">
+                <span class="text-[11px] font-orbitron font-black text-black bg-amber-400 px-1 rounded">62</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">AK STEALTH CARBON</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Raw Carbon & Electric Amber</div>
+              </div>
+            </div>
+
+            <!-- Livery 3: Giallo Modena Canary -->
+            <div data-livery="giallo-canary" class="livery-preset-card p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #eab308 60%, #dc2626 60%);">
+                <span class="text-[11px] font-orbitron font-black text-white bg-red-600 px-1 rounded">50</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">GIALLO CANARY</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Modena Yellow & Rosso Stripe</div>
+              </div>
+            </div>
+
+            <!-- Livery 4: Azzurro Le Mans Corsa -->
+            <div data-livery="azzurro-corsa" class="livery-preset-card p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #0284c7 60%, #06b6d4 60%);">
+                <span class="text-[11px] font-orbitron font-black text-black bg-cyan-300 px-1 rounded">62</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">AZZURRO CORSA</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Le Mans Azure Blue & Cyan</div>
+              </div>
+            </div>
+
+            <!-- Livery 5: Bianco Avus Pearl -->
+            <div data-livery="bianco-avus" class="livery-preset-card p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #f8fafc 60%, #ef4444 60%);">
+                <span class="text-[11px] font-orbitron font-black text-white bg-black px-1 rounded">50</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">BIANCO AVUS PEARL</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Arctic White & Tricolore Aero</div>
+              </div>
+            </div>
+
+            <!-- Livery 6: Verde Scuderia Racing -->
+            <div data-livery="verde-scuderia" class="livery-preset-card p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #047857 60%, #84cc16 60%);">
+                <span class="text-[11px] font-orbitron font-black text-black bg-lime-400 px-1 rounded">62</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">VERDE SCUDERIA</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Metallic Green & Volt Lime</div>
+              </div>
+            </div>
+
+            <!-- Livery 7: Hyper Violet Midnight -->
+            <div data-livery="hyper-violet" class="livery-preset-card p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #581c87 60%, #ec4899 60%);">
+                <span class="text-[11px] font-orbitron font-black text-white bg-pink-600 px-1 rounded">50</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">HYPER VIOLET</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Midnight Purple & Neon Pink</div>
+              </div>
+            </div>
+
+            <!-- Livery 8: Papaya Gulf Endurance -->
+            <div data-livery="papaya-gulf" class="livery-preset-card p-4 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-1 border border-white/20 shadow-inner" style="background: linear-gradient(135deg, #ea580c 60%, #38bdf8 60%);">
+                <span class="text-[11px] font-orbitron font-black text-black bg-cyan-300 px-1 rounded">62</span>
+              </div>
+              <div>
+                <div class="font-syncopate font-bold text-xs text-white">PAPAYA GULF</div>
+                <div class="text-[11px] font-rajdhani text-white/60">Endurance Orange & Gulf Sky</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Real-Time Interactive Custom Color Studio (Span 5) -->
+        <div class="lg:col-span-5 bg-zinc-900/60 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl space-y-6">
+          <div class="border-b border-white/10 pb-4">
+            <div class="inline-flex items-center gap-2 font-rajdhani font-bold text-xs uppercase tracking-widest text-red-400">
+              <i class="fa-solid fa-sliders"></i> Real-Time Color Customizer
+            </div>
+            <h3 class="font-syncopate font-bold text-xl text-white">CUSTOM COLOUR STUDIO</h3>
+          </div>
+
+          <!-- Color Sliders & Inputs -->
+          <div class="space-y-4 font-rajdhani font-bold text-sm">
+            
+            <!-- 1. Primary Car Body Color -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-white/80">
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-car text-red-500"></i> PRIMARY BODY COLOUR
+                </span>
+                <span id="car-color-body-hex" class="text-amber-400 font-mono text-xs">#C70000</span>
+              </div>
+              <div class="custom-color-picker-wrap">
+                <input type="color" id="car-color-body-input" value="#c70000">
+                <span class="text-xs text-white/60 font-medium">Click circle to pick any custom paint color</span>
+              </div>
+            </div>
+
+            <!-- 2. Secondary Livery / Swoosh Stripe Color -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-white/80">
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-paintbrush text-yellow-400"></i> LIVERY STRIPE / AERO ACCENT
+                </span>
+                <span id="car-color-accent-hex" class="text-amber-400 font-mono text-xs">#FACC15</span>
+              </div>
+              <div class="custom-color-picker-wrap">
+                <input type="color" id="car-color-accent-input" value="#facc15">
+                <span class="text-xs text-white/60 font-medium">Side swooshes, roof visor & wing endplates</span>
+              </div>
+            </div>
+
+            <!-- 3. BBS Racing Rims Color -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-white/80">
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-notch text-white/70"></i> BBS RACING RIMS
+                </span>
+                <span id="car-color-rim-hex" class="text-amber-400 font-mono text-xs">#141418</span>
+              </div>
+              <div class="custom-color-picker-wrap">
+                <input type="color" id="car-color-rim-input" value="#141418">
+                <span class="text-xs text-white/60 font-medium">Alloy wheels (Satin Black, Bronze, Gold, Silver)</span>
+              </div>
+            </div>
+
+            <!-- 4. Neon Ground Underglow -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-white/80">
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-sun text-amber-400"></i> PADDOCK UNDERGLOW NEON
+                </span>
+                <span class="text-amber-400 font-mono text-xs">DYNAMIC LIGHT</span>
+              </div>
+              <div class="custom-color-picker-wrap">
+                <input type="color" id="car-color-underglow-input" value="#facc15">
+                <span class="text-xs text-white/60 font-medium">Underbody ambient reflection glow</span>
+              </div>
+            </div>
+
+            <!-- 5. Finish Type Selector -->
+            <div class="space-y-2 pt-2 border-t border-white/10">
+              <span class="text-white/80 text-xs flex items-center gap-2">
+                <i class="fa-solid fa-sparkles text-amber-400"></i> PAINT FINISH COATING:
+              </span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button data-finish="gloss" class="finish-type-btn active-finish">GLOSS</button>
+                <button data-finish="metallic" class="finish-type-btn">METALLIC</button>
+                <button data-finish="matte" class="finish-type-btn">MATTE</button>
+                <button data-finish="carbon" class="finish-type-btn">CARBON</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 2: OFFICIAL HYPERCAR HD PHOTO & TELEMETRY SPOTLIGHT               -->
+  <!-- ========================================================================= -->
+  <section id="official-photo-spotlight" class="relative z-20 py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-gradient-to-b from-black via-zinc-950 to-black">
+    <div class="max-w-7xl mx-auto space-y-10">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-6">
+        <div>
+          <div class="inline-flex items-center gap-2 font-rajdhani font-bold text-sm uppercase tracking-widest text-amber-400 mb-2">
+            <i class="fa-solid fa-camera-retro text-yellow-400"></i> Official High-Definition Machine Showcase
+          </div>
+          <h2 class="font-syncopate font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
+            OFFICIAL CAR <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-yellow-300">SPOTLIGHT & TELEMETRY</span>
+          </h2>
+          <p class="font-rajdhani text-white/70 text-base sm:text-lg max-w-2xl mt-2">
+            Hover or click on the interactive telemetry hotspots across the official Le Mans Hypercar machine 
+            to explore championship-winning aerodynamics and powertrain engineering.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="#car-showcase" class="px-5 py-3 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-black font-orbitron font-bold text-xs uppercase tracking-wider shadow-lg flex items-center gap-2">
+            <i class="fa-solid fa-vr-cardboard"></i> SWITCH TO 3D SIMULATOR
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Official Car Photo Container -->
+      <div class="official-car-container relative w-full aspect-[16/9] max-h-[680px] bg-black overflow-hidden flex items-center justify-center">
+        
+        <!-- Official Car Image Asset -->
+        <img src="assets/official-hypercar.png" alt="Official Ajith Kumar Racing Le Mans Hypercar #50" class="w-full h-full object-cover select-none">
+
+        <!-- Hotspot 1: Carbon Shark Fin & Cockpit Roof -->
+        <div class="telemetry-hotspot" style="top: 24%; left: 45%;">
+          <div class="hotspot-dot"></div>
+          <div class="hotspot-card">
+            <div class="font-syncopate font-bold text-xs text-amber-400 flex items-center gap-1.5 mb-1">
+              <i class="fa-solid fa-wind"></i> CARBON SHARK DORSAL FIN
+            </div>
+            <p class="font-rajdhani text-white/80 text-xs leading-relaxed">
+              Provides lateral stability through high-speed corners and channels clean airflow straight into the massive dual-element rear wing.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hotspot 2: Le Mans #50 Livery & Yellow Swoosh Flank -->
+        <div class="telemetry-hotspot" style="top: 52%; left: 45%;">
+          <div class="hotspot-dot"></div>
+          <div class="hotspot-card">
+            <div class="font-syncopate font-bold text-xs text-red-400 flex items-center gap-1.5 mb-1">
+              <i class="fa-solid fa-flag-checkered"></i> HYPERCAR #50 LIVERY
+            </div>
+            <p class="font-rajdhani text-white/80 text-xs leading-relaxed">
+              Signature Rosso Corsa with Giallo Modena speed swooshes, FIA WEC Hypercar badge, Richard Mille, and Adler race livery.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hotspot 3: Brembo Carbon-Ceramic Brakes & BBS Wheels -->
+        <div class="telemetry-hotspot" style="top: 54%; left: 63%;">
+          <div class="hotspot-dot"></div>
+          <div class="hotspot-card">
+            <div class="font-syncopate font-bold text-xs text-yellow-400 flex items-center gap-1.5 mb-1">
+              <i class="fa-solid fa-circle-dot"></i> BREMBO CARBON CERAMICS
+            </div>
+            <p class="font-rajdhani text-white/80 text-xs leading-relaxed">
+              High-thermal carbon ceramic brake discs paired with Michelin Pilot Sport Endurance slicks on BBS lightweight center-lock alloy rims.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hotspot 4: Front Aerodynamic Splitter & Matrix LED Bar -->
+        <div class="telemetry-hotspot" style="top: 58%; left: 85%;">
+          <div class="hotspot-dot"></div>
+          <div class="hotspot-card">
+            <div class="font-syncopate font-bold text-xs text-cyan-400 flex items-center gap-1.5 mb-1">
+              <i class="fa-solid fa-lightbulb"></i> FRONT AERO & MATRIX LEDS
+            </div>
+            <p class="font-rajdhani text-white/80 text-xs leading-relaxed">
+              Carbon fiber front aerodynamic underbody tunnels generating extreme downforce, illuminated by slim endurance matrix LED light bars.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hotspot 5: Massive Rear Wing & Diffuser -->
+        <div class="telemetry-hotspot" style="top: 36%; left: 10%;">
+          <div class="hotspot-dot"></div>
+          <div class="hotspot-card">
+            <div class="font-syncopate font-bold text-xs text-orange-400 flex items-center gap-1.5 mb-1">
+              <i class="fa-solid fa-plane"></i> DUAL-ELEMENT HIGH WING
+            </div>
+            <p class="font-rajdhani text-white/80 text-xs leading-relaxed">
+              Swan-neck mounted carbon wing with yellow livery endplates delivering over 1,200 kg of aerodynamic downforce at 300+ km/h.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hotspot Legend Pill -->
+        <div class="absolute bottom-4 left-4 px-4 py-2 rounded-xl bg-black/80 border border-white/20 backdrop-blur-md text-xs font-rajdhani font-semibold text-white/80 flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+          <span>CLICK OR HOVER ORANGE DOTS FOR TELEMETRY INSIGHTS</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 3: THE FIRE SPEEDOMETER AUTOMATION & HYPER-COCKPIT               -->
   <!-- ========================================================================= -->
   <section id="telemetry-cockpit" class="relative z-20 py-20 px-4 sm:px-6 lg:px-8 border-t border-b border-white/10 bg-gradient-to-b from-black via-zinc-950 to-black">
     <div class="max-w-7xl mx-auto space-y-10">
@@ -239,6 +670,12 @@
 
         <!-- Automation Controls Header -->
         <div class="flex flex-wrap items-center gap-3">
+          <!-- Movable Speedometer Button (ON / OFF) -->
+          <button id="speedo-movable-toggle-btn" class="movable-toggle-btn px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-orbitron font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-2 group cursor-pointer shadow-lg" title="Make Speedometer Movable / Draggable">
+            <i class="fa-solid fa-arrows-up-down-left-right text-amber-400 group-hover:scale-110 transition-transform"></i>
+            <span>MOVE SPEEDOMETER: <span id="speedo-movable-status" class="text-amber-400 font-black">OFF</span></span>
+          </button>
+
           <!-- Autopilot / Auto Dyno Run Mode Toggle -->
           <button id="speedo-auto-mode-btn" class="px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-red-600 text-white font-orbitron font-bold text-xs tracking-wider uppercase shadow-lg shadow-orange-500/20 hover:shadow-orange-500/50 transition-all flex items-center gap-2">
             <i class="fa-solid fa-play" id="speedo-auto-icon"></i>
@@ -259,11 +696,70 @@
       </div>
 
       <!-- Cockpit Dashboard Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative">
         
+        <!-- Speedometer Docking Placeholder (shown when speedometer is floating) -->
+        <div id="speedometer-placeholder" class="hidden lg:col-span-8 bg-zinc-950/50 border-2 border-dashed border-amber-500/30 rounded-3xl p-8 backdrop-blur-md flex flex-col items-center justify-center text-center gap-5 min-h-[520px]">
+          <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/40 flex items-center justify-center text-amber-400 text-2xl animate-pulse">
+            <i class="fa-solid fa-arrows-up-down-left-right"></i>
+          </div>
+          <div class="space-y-2">
+            <div class="font-syncopate font-black text-xl text-white">SPEEDOMETER DETACHED & MOVABLE</div>
+            <p class="font-rajdhani text-white/70 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+              The fire speedometer is now in floating movable mode. Click and drag it anywhere across the screen, or click below to dock it back.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <button id="placeholder-dock-btn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-black font-orbitron font-black text-xs uppercase tracking-wider shadow-lg shadow-orange-500/20 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-arrow-down-to-bracket"></i> DOCK SPEEDOMETER HERE
+            </button>
+            <button id="placeholder-center-btn" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-orbitron font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+              <i class="fa-solid fa-crosshairs text-amber-400"></i> CENTER ON SCREEN
+            </button>
+          </div>
+        </div>
+
         <!-- Left Column: Primary Fire Speedometer & Tachometer Canvas (Span 8) -->
-        <div class="lg:col-span-8 bg-zinc-900/60 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl relative overflow-hidden shadow-2xl flex flex-col justify-between">
+        <div id="speedometer-card" class="lg:col-span-8 bg-zinc-900/60 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl relative overflow-hidden shadow-2xl flex flex-col justify-between">
           
+          <!-- Movable Drag Bar Header (Active when Movable mode is ON) -->
+          <div id="speedo-drag-bar" class="speedo-drag-bar hidden">
+            <div class="flex items-center gap-3">
+              <div class="cursor-grab active:cursor-grabbing p-1 text-amber-400 hover:text-white">
+                <i class="fa-solid fa-grip-vertical text-base"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="font-syncopate font-bold text-xs tracking-wider text-white">AK-50 HYPERCAR HUD</span>
+                <span class="px-2 py-0.5 rounded text-[9px] font-orbitron font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40 animate-pulse">MOVABLE ON</span>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <!-- Toggle Compact / Full HUD -->
+              <button id="speedo-compact-toggle-btn" title="Toggle Compact HUD Size" class="p-1.5 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/15 text-white/70 hover:text-white text-xs font-orbitron font-bold flex items-center gap-1.5 transition-all">
+                <i class="fa-solid fa-compress" id="speedo-compact-icon"></i>
+                <span class="hidden sm:inline text-[10px]">COMPACT</span>
+              </button>
+
+              <!-- Center / Reset Position -->
+              <button id="speedo-center-btn" title="Center on Screen" class="p-1.5 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/15 text-white/70 hover:text-white text-xs font-orbitron font-bold flex items-center gap-1.5 transition-all">
+                <i class="fa-solid fa-crosshairs"></i>
+                <span class="hidden sm:inline text-[10px]">CENTER</span>
+              </button>
+
+              <!-- Dock Back Button -->
+              <button id="speedo-dock-btn" title="Dock back to Cockpit Dashboard" class="p-1.5 px-2.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-orbitron font-bold flex items-center gap-1.5 transition-all">
+                <i class="fa-solid fa-arrow-down-to-bracket"></i>
+                <span class="text-[10px]">DOCK</span>
+              </button>
+
+              <!-- Close / Lock Movable Mode -->
+              <button id="speedo-close-movable-btn" title="Turn Movable Mode Off" class="p-1.5 px-2 rounded-lg bg-red-950/40 hover:bg-red-900/60 border border-red-500/40 text-red-300 hover:text-white text-xs transition-all">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+
           <!-- Top Gauges Bar: Shift Lights, Boost & Mode -->
           <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
             <!-- Gear Shift LED Array (Formula 1 / GT3 Style) -->
@@ -289,13 +785,13 @@
                 <span id="current-mode-display">TRACK • BEAST MODE</span>
               </div>
               <div class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 font-orbitron font-bold text-xs">
-                TC: <span class="text-amber-400">OFF</span>
+                MGU-K: <span class="text-emerald-400">ACTIVE</span>
               </div>
             </div>
           </div>
 
           <!-- Main Interactive Canvas for Speedometer, Tachometer & Fire FX -->
-          <div class="relative flex items-center justify-center my-6 min-h-[420px]">
+          <div class="speedo-canvas-container relative flex items-center justify-center my-6 min-h-[420px]">
             <canvas id="fire-speedometer-canvas" class="w-full max-w-[650px] aspect-square"></canvas>
 
             <!-- Center Digital Speed & Gear HUD Overlay -->
@@ -319,7 +815,7 @@
               </div>
 
               <!-- Live RPM & Turbo Boost -->
-              <div class="mt-4 flex items-center gap-6 font-rajdhani font-bold text-sm">
+              <div class="speedo-secondary-stats mt-4 flex items-center gap-6 font-rajdhani font-bold text-sm">
                 <div class="text-white/60">
                   RPM: <span id="digital-rpm-value" class="text-amber-400 font-orbitron font-extrabold text-base">850</span>
                 </div>
@@ -341,7 +837,7 @@
           </div>
 
           <!-- Bottom Telemetry Metric Sliders / Bars -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10 font-rajdhani font-bold text-xs">
+          <div class="speedo-bottom-telemetry grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10 font-rajdhani font-bold text-xs">
             <div class="space-y-1">
               <div class="flex justify-between text-white/60">
                 <span>THROTTLE POSITION</span>
@@ -374,7 +870,7 @@
 
             <div class="space-y-1">
               <div class="flex justify-between text-white/60">
-                <span>NITROUS CHARGE</span>
+                <span>HYBRID MGU-K CHARGE</span>
                 <span id="metric-nos-val" class="text-cyan-400">100%</span>
               </div>
               <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
@@ -402,7 +898,7 @@
               <button id="manual-throttle-pedal" class="throttle-pedal w-full py-8 rounded-2xl bg-gradient-to-b from-zinc-800 to-zinc-950 border-2 border-amber-500/50 hover:border-amber-400 text-white font-orbitron font-black text-lg tracking-wider uppercase shadow-xl hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] active:scale-[0.98] transition-all flex flex-col items-center justify-center gap-2 select-none cursor-pointer">
                 <div class="flex items-center gap-3">
                   <i class="fa-solid fa-bolt text-amber-400 text-2xl animate-pulse"></i>
-                  <span id="throttle-btn-label">HOLD TO REV THROTTLE</span>
+                  <span id="throttle-btn-label">HOLD TO REV HYPERCAR</span>
                 </div>
                 <span class="text-xs font-rajdhani text-amber-300 font-semibold tracking-widest">
                   (PRESS & HOLD FOR MAXIMUM ACCELERATION & FIRE)
@@ -414,7 +910,7 @@
             <div class="grid grid-cols-2 gap-3">
               <button id="manual-nitrous-btn" class="py-3 px-4 rounded-xl bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-orbitron font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/10 active:scale-95 transition-all">
                 <i class="fa-solid fa-wind text-cyan-400"></i>
-                <span>NITROUS BOOST</span>
+                <span>HYBRID OVERBOOST</span>
               </button>
 
               <button id="manual-launch-btn" class="py-3 px-4 rounded-xl bg-red-950/40 hover:bg-red-900/60 border border-red-500/50 hover:border-red-400 text-red-300 font-orbitron font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-red-500/10 active:scale-95 transition-all">
@@ -440,7 +936,7 @@
               <span class="flex items-center gap-2">
                 <i class="fa-solid fa-circle-nodes text-cyan-400"></i> G-FORCE & TIRE THERMALS
               </span>
-              <span class="text-xs text-amber-400 font-mono">LATERAL: <span id="g-force-val">1.82 G</span></span>
+              <span class="text-xs text-amber-400 font-mono">LATERAL: <span id="g-force-val">2.35 G</span></span>
             </h3>
 
             <!-- 4-Wheel Tire Temperature Display -->
@@ -467,7 +963,7 @@
             <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-rajdhani">
               <span class="text-white/50">ENGINE SOUND PROFILE:</span>
               <select id="engine-profile-select" class="bg-black border border-white/20 rounded px-2 py-1 text-amber-400 font-orbitron text-xs focus:outline-none focus:border-amber-400">
-                <option value="gt3">PORSCHE 992 FLAT-6</option>
+                <option value="gt3">LE MANS HYPERCAR V6 HYBRID</option>
                 <option value="v8biturbo">V8 TWIN-TURBO GT</option>
                 <option value="v10screamer">V10 9,500 RPM SCREAMER</option>
               </select>
@@ -483,135 +979,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION 2: OFFICIAL AK RACING DEMO CAR (3D / WEBGL INTERACTIVE MACHINE)  -->
-  <!-- ========================================================================= -->
-  <section id="car-showcase" class="relative z-20 py-24 px-4 sm:px-6 lg:px-8 bg-black">
-    <div class="max-w-7xl mx-auto space-y-10">
-      
-      <!-- Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-6">
-        <div>
-          <div class="inline-flex items-center gap-2 font-rajdhani font-bold text-sm uppercase tracking-widest text-cyan-400 mb-2">
-            <i class="fa-solid fa-car text-cyan-400"></i> Official FIA GT3 Cup Livery
-          </div>
-          <h2 class="font-syncopate font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
-            OFFICIAL AK RACING <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-amber-400">DEMO CAR</span>
-          </h2>
-          <p class="font-rajdhani text-white/70 text-base sm:text-lg max-w-2xl mt-2">
-            360° Real-time 3D simulation with dynamic aerodynamic active aero, dual-exhaust flame throwers, 
-            glowing Brembo carbon-ceramic brakes, and authentic race throttle audio revving.
-          </p>
-        </div>
-
-        <!-- 3D Camera Angles & Lighting -->
-        <div class="flex flex-wrap items-center gap-2">
-          <button data-camera-view="front34" class="cam-preset-btn active px-3.5 py-2 rounded-lg bg-cyan-500/20 border border-cyan-400 text-cyan-300 font-orbitron font-bold text-xs uppercase">
-            3/4 HERO
-          </button>
-          <button data-camera-view="rear" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase">
-            EXHAUST / FLAME
-          </button>
-          <button data-camera-view="cockpit" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase">
-            COCKPIT
-          </button>
-          <button data-camera-view="side" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase">
-            SIDE PROFILE
-          </button>
-          <button data-camera-view="top" class="cam-preset-btn px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white/70 hover:text-white font-orbitron font-bold text-xs uppercase">
-            AERO TOP
-          </button>
-        </div>
-      </div>
-
-      <!-- Main 3D Stage Container -->
-      <div class="relative w-full h-[620px] rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-b from-zinc-950 via-zinc-900 to-black shadow-[0_0_60px_rgba(0,0,0,0.8)]">
-        
-        <!-- 3D WebGL Canvas Viewport -->
-        <div id="three-car-container" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
-
-        <!-- Top Left: Car Spec HUD -->
-        <div class="absolute top-6 left-6 pointer-events-none space-y-2">
-          <div class="px-4 py-2 rounded-xl bg-black/80 border border-white/15 backdrop-blur-md text-left inline-block">
-            <div class="font-syncopate font-bold text-sm text-white flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-              PORSCHE 992 GT3 CUP
-            </div>
-            <div class="text-[11px] font-rajdhani text-white/60 font-semibold tracking-wider">
-              AJITH KUMAR RACING • CAR #62 • DUBAI 24H SPEC
-            </div>
-          </div>
-        </div>
-
-        <!-- Top Right: Interactive Livery & Visual Toggles -->
-        <div class="absolute top-6 right-6 flex flex-col gap-2">
-          <!-- Livery Selector -->
-          <div class="p-3 rounded-2xl bg-black/80 border border-white/15 backdrop-blur-md space-y-2">
-            <div class="text-[10px] font-orbitron font-bold text-white/50 uppercase tracking-widest text-right">LIVERY THEME:</div>
-            <div class="flex items-center gap-2">
-              <button data-livery="ak-stealth" title="AK Stealth Carbon" class="livery-btn active w-7 h-7 rounded-full border-2 border-amber-400 bg-zinc-900 flex items-center justify-center">
-                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
-              </button>
-              <button data-livery="dubai-gold" title="Dubai 24H Gold" class="livery-btn w-7 h-7 rounded-full border-2 border-transparent hover:border-white bg-amber-600 flex items-center justify-center">
-                <span class="w-3 h-3 rounded-full bg-yellow-300"></span>
-              </button>
-              <button data-livery="spa-cyan" title="Spa Francorchamps Cyan" class="livery-btn w-7 h-7 rounded-full border-2 border-transparent hover:border-white bg-cyan-600 flex items-center justify-center">
-                <span class="w-3 h-3 rounded-full bg-cyan-300"></span>
-              </button>
-              <button data-livery="monza-red" title="Monza Redline" class="livery-btn w-7 h-7 rounded-full border-2 border-transparent hover:border-white bg-red-600 flex items-center justify-center">
-                <span class="w-3 h-3 rounded-full bg-red-400"></span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Headlights / Underglow Toggle -->
-          <div class="p-3 rounded-2xl bg-black/80 border border-white/15 backdrop-blur-md flex items-center justify-between gap-3">
-            <button id="toggle-headlights-btn" class="px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-400/50 text-amber-300 font-orbitron text-xs font-bold flex items-center gap-2">
-              <i class="fa-solid fa-lightbulb"></i> MATRIX LEDS
-            </button>
-            <button id="toggle-underglow-btn" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 font-orbitron text-xs font-bold flex items-center gap-2">
-              <i class="fa-solid fa-sun"></i> UNDERGLOW
-            </button>
-          </div>
-        </div>
-
-        <!-- Bottom Center: 3D Car Real-time Throttle & Burnout Station -->
-        <div class="absolute bottom-6 inset-x-6 flex flex-wrap items-center justify-between gap-4 pointer-events-auto">
-          
-          <!-- Instructions Hint -->
-          <div class="hidden sm:flex items-center gap-3 px-4 py-2.5 rounded-xl bg-black/80 border border-white/10 backdrop-blur-md text-xs font-rajdhani text-white/70">
-            <i class="fa-solid fa-computer-mouse text-amber-400"></i>
-            <span>CLICK & DRAG TO ORBIT 360° • SCROLL TO ZOOM</span>
-          </div>
-
-          <!-- Fast Action Rev & Burnout Triggers -->
-          <div class="flex items-center gap-3 ml-auto">
-            <!-- Burnout Tire Smoke Trigger -->
-            <button id="car-burnout-btn" class="px-5 py-3 rounded-xl bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-500 hover:to-purple-500 text-white font-orbitron font-black text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 flex items-center gap-2 active:scale-95 transition-all">
-              <i class="fa-solid fa-fire text-amber-300"></i>
-              <span>TRIGGER BURNOUT & FLAMES</span>
-            </button>
-
-            <!-- Car 3D Quick Rev Pedal -->
-            <button id="car-rev-trigger-btn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-black font-orbitron font-black text-xs uppercase tracking-wider shadow-lg shadow-orange-500/30 flex items-center gap-2 active:scale-95 transition-all select-none">
-              <i class="fa-solid fa-gauge-simple-high text-black"></i>
-              <span>REV GT3 ENGINE</span>
-            </button>
-          </div>
-
-        </div>
-
-        <!-- Flame Burst Warning Pill -->
-        <div id="car-flame-badge" class="absolute bottom-24 left-1/2 -translate-x-1/2 opacity-0 pointer-events-none transition-opacity duration-150 px-6 py-2 rounded-full bg-red-600/90 border border-red-400 text-white font-orbitron font-black text-xs tracking-widest uppercase shadow-[0_0_30px_rgba(239,68,68,0.8)]">
-          <i class="fa-solid fa-fire-burner animate-bounce mr-2"></i> EXHAUST AFTERBURNER ACTIVE!
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SECTION 3: GT3 AUDIO ACOUSTICS & PROCEDURAL SOUND SYNTHESIS              -->
+  <!-- SECTION 4: GT3 & HYPERCAR AUDIO ACOUSTICS & PROCEDURAL SOUND SYNTHESIS    -->
   <!-- ========================================================================= -->
   <section id="sound-dyno" class="relative z-20 py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-zinc-950">
     <div class="max-w-7xl mx-auto space-y-12">
@@ -624,7 +992,7 @@
           RACE THROTTLE <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-red-500">SOUND DYNO</span>
         </h2>
         <p class="font-rajdhani text-white/70 text-base sm:text-lg">
-          Zero-delay procedural audio synthesis recreating the high-compression cylinder firings, straight-cut gearbox whine, 
+          Zero-delay procedural audio synthesis recreating the high-compression cylinder firings, electric hybrid motor whirr, 
           turbo blow-off valve flutter, and exhaust backfire pops in authentic studio-grade realism.
         </p>
       </div>
@@ -680,7 +1048,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION 4: AJITH KUMAR RACING HERITAGE & 24H ENDURANCE FLEET             -->
+  <!-- SECTION 5: AJITH KUMAR RACING HERITAGE & 24H ENDURANCE FLEET             -->
   <!-- ========================================================================= -->
   <section id="team-heritage" class="relative z-20 py-24 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-black">
     <div class="max-w-7xl mx-auto space-y-16">
@@ -706,16 +1074,16 @@
         <!-- Card 1: 24H Series -->
         <div class="relative group rounded-3xl overflow-hidden bg-zinc-900/60 border border-white/10 hover:border-amber-500/60 transition-all duration-300 p-8 flex flex-col justify-between space-y-6">
           <div class="space-y-4">
-            <div class="font-orbitron font-extrabold text-amber-400 text-3xl">24H SERIES</div>
-            <h3 class="font-syncopate font-bold text-xl text-white">EUROPEAN & MIDDLE EAST CHAMPIONSHIP</h3>
+            <div class="font-orbitron font-extrabold text-amber-400 text-3xl">24H LE MANS & WEC</div>
+            <h3 class="font-syncopate font-bold text-xl text-white">WORLD ENDURANCE CHAMPIONSHIP</h3>
             <p class="font-rajdhani text-white/70 text-base leading-relaxed">
-              Active participation in grueling 24-hour endurance battles at Dubai Autodrome, Circuit de Spa-Francorchamps, 
-              Mugello, and Sepang under official FIA international regulations.
+              Active participation in grueling 24-hour endurance battles at Circuit de la Sarthe, Dubai Autodrome, Circuit de Spa-Francorchamps, 
+              and Monza under official FIA international Hypercar regulations.
             </p>
           </div>
           <div class="border-t border-white/10 pt-4 flex items-center justify-between font-rajdhani font-bold text-sm">
             <span class="text-white/50">CHASSIS SPEC</span>
-            <span class="text-amber-400 font-mono">PORSCHE 992 GT3 CUP</span>
+            <span class="text-amber-400 font-mono">499P LE MANS HYPERCAR</span>
           </div>
         </div>
 
@@ -742,7 +1110,7 @@
             <h3 class="font-syncopate font-bold text-xl text-white">NEXT-GEN MOTORSPORTS ECOSYSTEM</h3>
             <p class="font-rajdhani text-white/70 text-base leading-relaxed">
               Pioneering hyper-advanced digital telemetry, simulation academies, and high-performance engineering hubs 
-              connecting India to the world stage of elite GT3 racing.
+              connecting India to the world stage of elite Le Mans racing.
             </p>
           </div>
           <div class="border-t border-white/10 pt-4 flex items-center justify-between font-rajdhani font-bold text-sm">
@@ -768,7 +1136,7 @@
         </div>
         <div>
           <div class="font-syncopate font-bold text-white text-base">AJITH KUMAR RACING</div>
-          <div class="font-rajdhani text-xs text-white/50">OFFICIAL GT3 MOTORSPORTS DIVISION</div>
+          <div class="font-rajdhani text-xs text-white/50">OFFICIAL LE MANS HYPERCAR DIVISION</div>
         </div>
       </div>
 

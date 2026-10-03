@@ -9,10 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Fire Speedometer Canvas
   window.fireSpeedo = new FireSpeedometer('fire-speedometer-canvas');
 
-  // 2. Initialize 3D GT3 Demo Car
+  // 2. Initialize Movable / Floating Speedometer Controller
+  window.speedoMovableCtrl = new SpeedometerMovableController({
+    cardId: 'speedometer-card',
+    placeholderId: 'speedometer-placeholder',
+    dragBarId: 'speedo-drag-bar'
+  });
+
+  // 3. Initialize 3D GT3 Demo Car
   window.akCar3D = new AKRacingCar3D('three-car-container');
 
-  // 3. Bind UI & Engine Controls
+  // 4. Bind UI & Engine Controls
   setupMasterControls();
   setupThrottleControls();
   setupAutomationControls();
@@ -242,6 +249,8 @@ function setupKeyboardControls() {
       if (window.fireSpeedo) window.fireSpeedo.triggerLaunchControl();
     } else if (e.code === 'KeyB') {
       if (window.akCar3D) window.akCar3D.triggerBurnout();
+    } else if (e.code === 'KeyM') {
+      if (window.speedoMovableCtrl) window.speedoMovableCtrl.toggle();
     } else if (e.code === 'KeyI') {
       const ignitionBtn = document.getElementById('master-ignition-btn');
       if (ignitionBtn) ignitionBtn.click();
