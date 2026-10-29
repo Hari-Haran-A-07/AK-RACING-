@@ -1,9 +1,34 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJITH KUMAR RACING | Official Le Mans Hypercar & Fire Telemetry</title>
+  <!-- OpenGraph Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ajith Kumar Racing — Le Mans 499P Hypercar & Fire Telemetry">
+  <meta property="og:description" content="Explore the official 1,000 HP Hybrid Le Mans Hypercar, real-time 3D livery customizer, fire speedometer, and procedural dyno sound engine.">
+  <meta property="og:image" content="https://hari-haran-a-07.github.io/AK-RACING-/assets/official-hypercar.png">
+  <meta property="og:url" content="https://hari-haran-a-07.github.io/AK-RACING-/">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ajith Kumar Racing (AK Racing) Le Mans Hypercar">
+  <meta name="twitter:description" content="Experience high-octane 3D car customizer and Web Audio engine dyno simulation.">
+  <meta name="twitter:image" content="https://hari-haran-a-07.github.io/AK-RACING-/assets/official-hypercar.png">
+
+  <!-- Schema.org Motorsports Vehicle JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsTeam",
+    "name": "Ajith Kumar Racing Team",
+    "alternateName": "AK Racing",
+    "sport": "Motorsport / FIA World Endurance Championship",
+    "url": "https://hari-haran-a-07.github.io/AK-RACING-/",
+    "logo": "https://hari-haran-a-07.github.io/AK-RACING-/assets/official-hypercar.png"
+  }
+  </script>
   <meta name="description" content="Official Ajith Kumar Racing Le Mans Hypercar (LMH #50/#62), Interactive 3D Car Livery & Colour Studio, Fire Speedometer Automation & Procedural Hybrid Audio Dyno.">
   
   <!-- Fonts -->
@@ -70,7 +95,7 @@
             <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/40">OFFICIAL LMH</span>
           </div>
           <div class="text-[11px] tracking-widest text-white/50 uppercase font-rajdhani font-semibold">
-            FIA WEC • 24H Le Mans Hypercar • 1,000 BHP Hybrid Beast
+            FIA WEC â€¢ 24H Le Mans Hypercar â€¢ 1,000 BHP Hybrid Beast
           </div>
         </div>
       </a>
@@ -150,7 +175,7 @@
         </div>
         <div class="ticker-item flex items-center gap-2 text-amber-400">
           <i class="fa-solid fa-flag-checkered"></i>
-          <span>LE MANS CHAMPION LIVERY • ROSSO CORSA & GIALLO MODENA</span>
+          <span>LE MANS CHAMPION LIVERY â€¢ ROSSO CORSA & GIALLO MODENA</span>
         </div>
       </div>
     </div>
@@ -286,9 +311,9 @@
             </div>
             <div class="text-[11px] font-rajdhani text-white/70 font-semibold tracking-wider flex items-center gap-3 mt-0.5">
               <span>AJITH KUMAR RACING</span>
-              <span class="text-amber-400">•</span>
+              <span class="text-amber-400">â€¢</span>
               <span class="text-amber-300 font-bold">FIA WEC / 24H HYPERCAR</span>
-              <span class="text-amber-400">•</span>
+              <span class="text-amber-400">â€¢</span>
               <span class="text-emerald-400 font-bold">1,000 BHP</span>
             </div>
           </div>
@@ -310,7 +335,7 @@
           <!-- Instructions Hint -->
           <div class="hidden sm:flex items-center gap-3 px-4 py-2.5 rounded-xl bg-black/85 border border-white/15 backdrop-blur-md text-xs font-rajdhani text-white/80 shadow-lg">
             <i class="fa-solid fa-arrows-spin text-amber-400 text-sm animate-spin"></i>
-            <span>CLICK & DRAG TO ORBIT 360° • SCROLL TO ZOOM • TEST COLORS BELOW</span>
+            <span>CLICK & DRAG TO ORBIT 360Â° â€¢ SCROLL TO ZOOM â€¢ TEST COLORS BELOW</span>
           </div>
 
           <!-- Fast Action Rev & Burnout Triggers -->
@@ -782,7 +807,7 @@
             <div class="flex items-center gap-3">
               <div class="px-3 py-1 rounded-md bg-red-600/20 border border-red-500/40 text-red-400 font-orbitron font-bold text-xs flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-                <span id="current-mode-display">TRACK • BEAST MODE</span>
+                <span id="current-mode-display">TRACK â€¢ BEAST MODE</span>
               </div>
               <div class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 font-orbitron font-bold text-xs">
                 MGU-K: <span class="text-emerald-400">ACTIVE</span>
@@ -831,7 +856,7 @@
             <!-- Fire Redline Alert Overlay -->
             <div id="redline-alert" class="absolute inset-0 pointer-events-none rounded-2xl border-4 border-red-600/0 transition-all duration-100 flex items-center justify-center opacity-0">
               <div class="bg-red-600/90 text-white font-syncopate font-black text-xl px-6 py-2 rounded-xl uppercase tracking-wider animate-pulse shadow-2xl shadow-red-600">
-                OVERBOOST • FLAME BURST!
+                OVERBOOST â€¢ FLAME BURST!
               </div>
             </div>
           </div>
@@ -861,7 +886,7 @@
             <div class="space-y-1">
               <div class="flex justify-between text-white/60">
                 <span>EXHAUST HEAT</span>
-                <span id="metric-exhaust-val" class="text-orange-400">420°C</span>
+                <span id="metric-exhaust-val" class="text-orange-400">420Â°C</span>
               </div>
               <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
                 <div id="bar-exhaust" class="h-full bg-gradient-to-r from-orange-500 via-red-500 to-purple-600 w-20 transition-all duration-100"></div>
@@ -943,19 +968,19 @@
             <div class="grid grid-cols-2 gap-3 font-rajdhani font-bold text-xs">
               <div class="p-3 rounded-xl bg-black/40 border border-emerald-500/30 flex justify-between items-center">
                 <span class="text-white/60">FRONT LEFT</span>
-                <span class="text-emerald-400 font-mono">92°C • 2.1 BAR</span>
+                <span class="text-emerald-400 font-mono">92Â°C â€¢ 2.1 BAR</span>
               </div>
               <div class="p-3 rounded-xl bg-black/40 border border-emerald-500/30 flex justify-between items-center">
                 <span class="text-white/60">FRONT RIGHT</span>
-                <span class="text-emerald-400 font-mono">94°C • 2.1 BAR</span>
+                <span class="text-emerald-400 font-mono">94Â°C â€¢ 2.1 BAR</span>
               </div>
               <div class="p-3 rounded-xl bg-black/40 border border-amber-500/30 flex justify-between items-center">
                 <span class="text-white/60">REAR LEFT</span>
-                <span class="text-amber-400 font-mono">104°C • 2.3 BAR</span>
+                <span class="text-amber-400 font-mono">104Â°C â€¢ 2.3 BAR</span>
               </div>
               <div class="p-3 rounded-xl bg-black/40 border border-amber-500/30 flex justify-between items-center">
                 <span class="text-white/60">REAR RIGHT</span>
-                <span class="text-amber-400 font-mono">106°C • 2.3 BAR</span>
+                <span class="text-amber-400 font-mono">106Â°C â€¢ 2.3 BAR</span>
               </div>
             </div>
 
@@ -1141,7 +1166,7 @@
       </div>
 
       <div class="font-rajdhani text-xs text-white/50 text-center md:text-right">
-        <div>© 2026 AJITH KUMAR RACING. ALL RIGHTS RESERVED.</div>
+        <div>Â© 2026 AJITH KUMAR RACING. ALL RIGHTS RESERVED.</div>
         <div class="text-amber-400 mt-1">POWERED BY ADVANCED PROCEDURAL TELEMETRY & WEBGL SIMULATION</div>
       </div>
 
@@ -1155,3 +1180,4 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
