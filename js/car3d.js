@@ -1,3 +1,11 @@
+﻿/**
+ * @fileoverview 3D WebGL Hypercar Simulation Engine
+ * @module js/car3d
+ * @description Renders the Ferrari 499P LMH chassis with procedural shaders,
+ * dynamic exhaust flame particles, brake rotor glow shaders, and orbit camera controls.
+ * @version 2.5.0
+ * @author Ajith Kumar Racing Development Team
+ */
 /**
  * ============================================================================
  * AJITH KUMAR RACING - OFFICIAL LE MANS 499P HYPERCAR 3D SIMULATION ENGINE
@@ -815,7 +823,7 @@ class AKRacingCar3D {
     // 6. Update badge displays if any
     const specCarName = document.getElementById('showcase-car-name');
     if (specCarName) {
-      specCarName.textContent = `LE MANS HYPERCAR • ${cfg.name || 'CUSTOM SPEC'}`;
+      specCarName.textContent = `LE MANS HYPERCAR â€¢ ${cfg.name || 'CUSTOM SPEC'}`;
     }
   }
 
@@ -1172,3 +1180,4 @@ class AKRacingCar3D {
 
 // Global Car Instance
 window.akCar3D = null;
+
