@@ -1,0 +1,18 @@
+﻿{
+  "name": "Ajith Kumar Racing — Le Mans Hypercar",
+  "short_name": "AK Racing",
+  "description": "Official Ajith Kumar Racing GT3 Hyper-Speedometer, 3D Hypercar & Telemetry Simulator",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "landscape-primary",
+  "background_color": "#08080a",
+  "theme_color": "#ea580c",
+  "icons": [
+    {
+      "src": "assets/official-hypercar.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
