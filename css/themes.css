@@ -1,0 +1,18 @@
+﻿/* AK Racing - Environmental Circuit Themes & Lighting Palettes */
+body[data-env-theme="midnight"] {
+  --bg-primary: #030305;
+  --ambient-hue: 220deg;
+  --glow-intensity: 0.8;
+}
+
+body[data-env-theme="spa-dusk"] {
+  --bg-primary: #0a050d;
+  --ambient-hue: 280deg;
+  --glow-intensity: 0.95;
+}
+
+body[data-env-theme="monza-noon"] {
+  --bg-primary: #0f1115;
+  --ambient-hue: 45deg;
+  --glow-intensity: 1.2;
+}
