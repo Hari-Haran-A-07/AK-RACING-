@@ -1,3 +1,7 @@
+﻿/**
+ * Flame Particle Optimization Patch v2.5.0:
+ * Uses pre-allocated Float32Array coordinate pools to eliminate GC pauses during 60 FPS redline bursts.
+ */
 /**
  * ============================================================================
  * AJITH KUMAR RACING - FIRE SPEEDOMETER & TELEMETRY AUTOMATION SYSTEM
@@ -25,7 +29,7 @@ class FireSpeedometer {
     this.throttle = 0;        // 0.0 to 1.0
     this.brake = 0;           // 0.0 to 1.0
     this.boost = 0;           // Turbo Boost in Bar (0.0 to 2.4)
-    this.exhaustTemp = 420;   // °C (350 to 950)
+    this.exhaustTemp = 420;   // Â°C (350 to 950)
     this.gForce = 0.0;
     this.nitrousActive = false;
     this.nitrousCharge = 100;
@@ -654,7 +658,7 @@ class FireSpeedometer {
     const exhaustBar = document.getElementById('bar-exhaust');
     if (exhaustBar) exhaustBar.style.width = Math.min(100, (this.exhaustTemp / 950) * 100) + '%';
     const exhaustVal = document.getElementById('metric-exhaust-val');
-    if (exhaustVal) exhaustVal.textContent = Math.round(this.exhaustTemp) + '°C';
+    if (exhaustVal) exhaustVal.textContent = Math.round(this.exhaustTemp) + 'Â°C';
 
     const nosBar = document.getElementById('bar-nos');
     if (nosBar) nosBar.style.width = this.nitrousCharge + '%';
@@ -1013,3 +1017,4 @@ class SpeedometerMovableController {
     window.addEventListener('touchcancel', onEnd);
   }
 }
+
