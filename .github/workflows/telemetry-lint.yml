@@ -1,0 +1,17 @@
+name: Circuit & Telemetry Data Validation
+
+on: [push, pull_request]
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate Circuit JSON Files
+        run: |
+          for file in data/circuits/*.json locales/*.json; do
+            if [ -f "$file" ]; then
+              python3 -m json.tool "$file" > /dev/null || exit 1
+            fi
+          done
+          echo "All JSON schema files are valid!"
