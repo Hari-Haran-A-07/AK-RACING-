@@ -1,0 +1,23 @@
+{
+  "id": "spa-francorchamps",
+  "name": "Circuit de Spa-Francorchamps",
+  "country": "Belgium",
+  "lengthMeters": 7004,
+  "turns": 19,
+  "elevationChangeMeters": 102.2,
+  "recordLap": {
+    "time": "2:16.890",
+    "driver": "Ajith Kumar",
+    "team": "Ajith Kumar Racing (AKR)",
+    "car": "Aston Martin Vantage AMR GT3 Evo",
+    "year": 2026
+  },
+  "sectors": [
+    { "sector": 1, "name": "La Source & Raidillon", "benchmarkSec": 41.200, "speedTrapKmh": 308.2 },
+    { "sector": 2, "name": "Les Combes & Pouhon", "benchmarkSec": 56.450, "speedTrapKmh": 272.0 },
+    { "sector": 3, "name": "Blanchimont & Bus Stop", "benchmarkSec": 39.240, "speedTrapKmh": 295.6 }
+  ],
+  "drsZones": 2,
+  "fuelConsumptionPerLapLiters": 4.65,
+  "pitDeltaSeconds": 27.8
+}
