@@ -1,0 +1,24 @@
+{
+  "app": {
+    "title": "Ajith Kumar Racing (AKR) - Tachimetro GT3 Hyper",
+    "subtitle": "Piattaforma Ufficiale Telemetria Motorsport"
+  },
+  "telemetry": {
+    "speed": "Velocità",
+    "rpm": "Giri Motore",
+    "gear": "Marcia",
+    "lapTime": "Tempo Giro",
+    "bestLap": "Miglior Giro",
+    "fuel": "Carburante",
+    "tireTemp": "Temp. Gomme",
+    "brakeBias": "Ripartitore Frenata",
+    "downforce": "Carico Aerodinamico",
+    "drs": "DRS Attivo"
+  },
+  "compounds": {
+    "soft": "Morbida",
+    "medium": "Media",
+    "hard": "Dura",
+    "wet": "Bagnato"
+  }
+}
