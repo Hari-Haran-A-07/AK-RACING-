@@ -1,0 +1,39 @@
+name: Automated Release Packager
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-and-archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Run Test Suite
+        run: |
+          node tests/physics.test.js
+          node tests/audio.test.js
+          node tests/analytics.test.js
+          node tests/dynamics.test.js
+          node tests/strategy.test.js
+          node tests/benchmark.js
+
+      - name: Archive Production Telemetry Bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: akr-telemetry-suite
+          path: |
+            index.html
+            js/
+            css/
+            locales/
+            data/
