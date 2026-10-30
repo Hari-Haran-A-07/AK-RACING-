@@ -1,0 +1,39 @@
+/* Ajith Kumar Racing - Futuristic Motorsport Telemetry HUD */
+.dash-lcd {
+    background: #0d121d;
+    border: 2px solid #00f3ff;
+    border-radius: 8px;
+    padding: 16px;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+}
+
+.dash-top-leds {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.dash-top-leds .led {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #222;
+}
+
+.dash-top-leds .led.green { background: #00ff66; box-shadow: 0 0 8px #00ff66; }
+.dash-top-leds .led.yellow { background: #ffcc00; box-shadow: 0 0 8px #ffcc00; }
+.dash-top-leds .led.red { background: #ff0033; box-shadow: 0 0 8px #ff0033; }
+.dash-top-leds .led.blue.flash { background: #00f3ff; box-shadow: 0 0 12px #00f3ff; animation: pulse 0.1s infinite; }
+
+.dash-gear {
+    font-size: 64px;
+    font-weight: 900;
+    text-align: center;
+    color: #00f3ff;
+}
+
+.dash-delta.purple { color: #d633ff; }
+.dash-delta.yellow { color: #ffcc00; }
