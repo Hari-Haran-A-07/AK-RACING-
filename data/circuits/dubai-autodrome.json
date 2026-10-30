@@ -1,0 +1,22 @@
+{
+  "id": "dubai-autodrome",
+  "name": "Dubai Autodrome 24H GP Circuit",
+  "country": "United Arab Emirates",
+  "lengthMeters": 5390,
+  "turns": 16,
+  "recordLap": {
+    "time": "1:43.820",
+    "driver": "Ajith Kumar",
+    "team": "Ajith Kumar Racing (AKR)",
+    "car": "Porsche 911 GT3 R (992)",
+    "year": 2026
+  },
+  "sectors": [
+    { "sector": 1, "lengthMeters": 1820, "benchmarkSec": 34.200, "speedTrapKmh": 285.4 },
+    { "sector": 2, "lengthMeters": 2150, "benchmarkSec": 41.520, "speedTrapKmh": 242.1 },
+    { "sector": 3, "lengthMeters": 1420, "benchmarkSec": 28.100, "speedTrapKmh": 268.0 }
+  ],
+  "drsZones": 2,
+  "fuelConsumptionPerLapLiters": 3.42,
+  "pitDeltaSeconds": 24.5
+}
