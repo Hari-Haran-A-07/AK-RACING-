@@ -1,22 +1,24 @@
-﻿{
-    "name":  "ajith-kumar-racing-gt3",
-    "version":  "2.5.0-pro",
-    "description":  "Official Ajith Kumar Racing GT3 Hyper-Speedometer, 3D Demo Car \u0026 Procedural Engine Audio Simulator",
-    "main":  "index.html",
-    "scripts":  {
-                    "start":  "npx serve . -p 3000",
-                    "dev":  "python -m http.server 3000",
-                    "test":  "node tests/physics.test.js \u0026\u0026 node tests/audio.test.js"
-                },
-    "keywords":  [
-                     "ajith-kumar-racing",
-                     "speedometer",
-                     "fire-particles",
-                     "threejs",
-                     "web-audio-api",
-                     "gt3",
-                     "24h-series"
-                 ],
-    "author":  "Ajith Kumar Racing Team",
-    "license":  "MIT"
+{
+    "name": "ajith-kumar-racing-gt3",
+    "version": "2.6.0-enterprise",
+    "description": "Official Ajith Kumar Racing GT3 Hyper-Speedometer, 3D Demo Car & Procedural Engine Audio Simulator",
+    "main": "index.html",
+    "scripts": {
+        "start": "npx serve . -p 3000",
+        "dev": "python -m http.server 3000",
+        "test": "node tests/physics.test.js && node tests/audio.test.js && node tests/analytics.test.js && node tests/dynamics.test.js && node tests/strategy.test.js && node tests/benchmark.js",
+        "benchmark": "node tests/benchmark.js"
+    },
+    "keywords": [
+        "ajith-kumar-racing",
+        "speedometer",
+        "telemetry",
+        "threejs",
+        "web-audio-api",
+        "gt3",
+        "24h-series",
+        "endurance"
+    ],
+    "author": "Ajith Kumar Racing Team",
+    "license": "MIT"
 }
