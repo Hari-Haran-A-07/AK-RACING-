@@ -1,0 +1,22 @@
+{
+  "id": "monza",
+  "name": "Autodromo Nazionale Monza",
+  "country": "Italy",
+  "lengthMeters": 5793,
+  "turns": 11,
+  "recordLap": {
+    "time": "1:47.112",
+    "driver": "Ajith Kumar",
+    "team": "Ajith Kumar Racing (AKR)",
+    "car": "Ferrari 296 GT3 Spec",
+    "year": 2026
+  },
+  "sectors": [
+    { "sector": 1, "lengthMeters": 1940, "benchmarkSec": 36.120, "speedTrapKmh": 332.8 },
+    { "sector": 2, "lengthMeters": 2180, "benchmarkSec": 42.840, "speedTrapKmh": 298.5 },
+    { "sector": 3, "lengthMeters": 1673, "benchmarkSec": 28.152, "speedTrapKmh": 341.2 }
+  ],
+  "drsZones": 2,
+  "fuelConsumptionPerLapLiters": 3.85,
+  "pitDeltaSeconds": 22.1
+}
