@@ -1,0 +1,25 @@
+{
+  "id": "nurburgring-nordschleife",
+  "name": "Nürburgring Nordschleife (The Green Hell)",
+  "country": "Germany",
+  "lengthMeters": 20832,
+  "turns": 73,
+  "elevationChangeMeters": 300.0,
+  "recordLap": {
+    "time": "6:38.240",
+    "driver": "Ajith Kumar",
+    "team": "Ajith Kumar Racing (AKR)",
+    "car": "Mercedes-AMG GT3 Pro",
+    "year": 2026
+  },
+  "sectors": [
+    { "sector": 1, "name": "Hatzenbach - Flugplatz", "benchmarkSec": 82.40 },
+    { "sector": 2, "name": "Schwedenkreuz - Adenauer Forst", "benchmarkSec": 94.60 },
+    { "sector": 3, "name": "Kallenhard - Wehrseifen", "benchmarkSec": 78.10 },
+    { "sector": 4, "name": "Bergwerk - Karussell", "benchmarkSec": 102.50 },
+    { "sector": 5, "name": "Hohe Acht - Pflanzgarten", "benchmarkSec": 98.24 },
+    { "sector": 6, "name": "Döttinger Höhe - Tiergarten", "benchmarkSec": 62.40 }
+  ],
+  "fuelConsumptionPerLapLiters": 12.8,
+  "pitDeltaSeconds": 48.0
+}
