@@ -1,0 +1,24 @@
+{
+  "app": {
+    "title": "アジット・クマール・レーシング (AKR) - GT3ハイパースピードメーター",
+    "subtitle": "公式国際モータースポーツテレメトリーシステム"
+  },
+  "telemetry": {
+    "speed": "車速",
+    "rpm": "エンジン回転数",
+    "gear": "ギア",
+    "lapTime": "ラップタイム",
+    "bestLap": "最速ラップ",
+    "fuel": "燃料残量",
+    "tireTemp": "タイヤ温度",
+    "brakeBias": "前後ブレーキバランス",
+    "downforce": "ダウンフォース",
+    "drs": "DRS作動"
+  },
+  "compounds": {
+    "soft": "ソフト",
+    "medium": "ミディアム",
+    "hard": "ハード",
+    "wet": "ウェット"
+  }
+}
